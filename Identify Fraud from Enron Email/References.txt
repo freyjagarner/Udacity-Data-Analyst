@@ -1,0 +1,15 @@
+https://towardsdatascience.com/fine-tuning-a-classifier-in-scikit-learn-66e048c21e65
+stackoverflow.com
+https://stackoverflow.com/questions/52269187/facing-valueerror-target-is-multiclass-but-average-binary
+https://stackoverflow.com/questions/55810062/valueerror-target-is-multiclass-but-average-binary-please-choose-another-ave
+https://www.markdownguide.org/basic-syntax/
+https://stackoverflow.com/questions/56486415/why-do-i-get-typeerror-numpy-int64-object-is-not-iterable-when-trying-to-it
+scikit-learn.org
+https://medium.com/analytics-vidhya/most-used-scikit-learn-algorithms-part-1-snehit-vaddi-7ec0c98e4edd
+https://docs.python.org/3/
+https://medium.com/@erikgreenj/k-neighbors-classifier-with-gridsearchcv-basics-3c445ddeb657#:~:text=kNN%20in%20a%20GridSearchCV&text=%2D%20metric%20which%20refers%20to%20how,chosen%20from%20the%20unknown%20point.
+https://www.youtube.com/watch?v=4b5d3muPQmA&list=PLblh5JKOoLUICTaGLRoHQDuF_7q2GfuJF&index=38
+https://www.tomasbeuzen.com/post/scikit-learn-gridsearch-pipelines/
+https://medium.com/data-science-reporter/feature-selection-via-grid-search-in-supervised-models-4dc0c43d7ab1
+
+“I hereby confirm that this submission is my work. I have cited above the origins of any parts of the submission that were taken from Websites, books, forums, blog posts, github repositories, etc.
