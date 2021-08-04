@@ -18,12 +18,8 @@ library(ggpubr)
 wine <- read.csv("wineQualityReds.csv")
 ```
 
-We will be exploring data regarding qualities of nearly 1600 red wines.
-This dataset includes a variety of objective observations on red wine and a 
-rating of the wines based on analysis by a group of wine experts. I chose this
-dataset as I used to be a server at a high end restaurant and I would be 
-interested to know if the conventional knowledge that we were taught to help
-customers is true within this dataset.
+We will be exploring data regarding the qualities of nearly 1600 red wines.
+This data set includes various objective observations on red wine and a rating of the wines based on analysis by a group of wine experts. I chose this data set as I used to be a server at a high-end restaurant and would be interested to know if the conventional knowledge taught to us to help customers is verifiable within this data set. 
 
 # Univariate Plots Section
 
@@ -33,9 +29,7 @@ customers is true within this dataset.
 #summary of red wine data
 summary(wine)
 ```
-Here in our statistical summary we see we have mostly objective, measurable 
-observations about the wine, with just quality being a subjective measure of the 
-wines. There are 1599 observations and 13 variables.
+Here, in our statistical summary, we see we have mostly objective, measurable observations about the wine, with just quality being a subjective measure of the wines. There are 1599 observations and 13 variables.
 
 
 ## Data Structure
@@ -44,10 +38,7 @@ wines. There are 1599 observations and 13 variables.
 #getting data structure
 str(wine)
 ```
-Now looking at our data structure we see we are dealing with some very small 
-numbers. Quality is, notably, an integer. This is inconvenient for our purposes
-because it will cause the graphs to make singular plots. It would be better if
-quality were treated as a numeric, so let's change that.
+Now, looking at our data structure, we see we are dealing with some very small numbers. Quality, notably, is an integer. This casting is inconvenient for our purposes because it will cause the graphs to make singular plots. It would be better to cast the quality as numeric, so let's change that.
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 #changing quality to a numeric value and observing the output
@@ -66,9 +57,7 @@ qplot(x = wine$quality,
       scale_x_continuous(breaks = seq(0,10,1))
 ```
 
-It looks like most of the wine with of middling quality according to our experts
-with most having a score of 5-6 out of 10. This makes me wonder about how this
-data was collected, and why so few were rated as exceptionally poor or excellent
+It looks like most of the wine with of middling quality with most having a score of 5-6 out of 10. It would be interesting to learn about the background of the wines and wine experts to find why so few have an exceptionally poor or excellent rating.
 
 
 ## Alcohol Content By Volume
@@ -81,8 +70,7 @@ qplot(x = wine$alcohol,
       scale_x_continuous(breaks = seq(0,15,.5))
 ```
 
-Here we can see that the bulk of our alcohol content is between 9% and 11% by
-volume with a little bit of an outlier around ~14.75%
+Here we can see that the bulk of our alcohol content is between 9% and 11% by volume with a little bit of an outlier around ~14.75%
 
 
 ## Residual Sugar
@@ -95,15 +83,11 @@ qplot(x = wine$residual.sugar,
       scale_x_continuous(breaks = seq(0,16,1))
 ```
 
-Our residual sugar is positively skewed with most of the data within 
-1.5-3 g / dm^3. There are some pretty far out numbers going up to around 
-15.5 g / dm^3. Seeing that most of the residual sugar is in the 1.5-3.5 g/dm^3
-is a huge alarm for me. Sugar in wine varies greatly and can be anywhere from
-0 to over 200 g/L (g/L is equivalent to g/dm^3) The fact that we only have wines
-under 20 g/L tells me we are dealing with only dry wines. There should be a
-relationship with sugar and alcohol content, as wines with more alcohol should 
-have less sugar as sugar is eaten by yeast to make alcohol in wine.
+The residual sugar is positively skewed, with most of the data within 1.5-3 g / dm^3. There are larger numbers, going up to around 15.5 g / dm^3. 
 
+Seeing that most of the residual sugar is in the 1.5-3.5 g/dm^3 is significant. Sugar in wine varies greatly and can be anywhere from 0 to over 200 g/L (g/L is equivalent to g/dm^3). That we only have wines under 20 g/L says we are dealing with only dry wines. 
+
+There should be a relationship between sugar and alcohol content, as wines with more alcohol should have less sugar. This relationship is because yeast consumes sugar to make alcohol in wine.
 
 ## Density
 
@@ -115,10 +99,9 @@ qplot(x = wine$density,
       scale_x_continuous(breaks = seq(0,2,.001 ))
 ```
 
-Our density has a nice, normal distribution with most wines falling between .995
-and .999 g/cm^3. There should be a relationship between alcohol, sugar
-and density, as sugar rich wines should be thicker while alcohol rich wines
-should be thinner.
+Our density has a normal distribution with most wines falling between .995 and .999 g/cm^3. 
+
+There should be a relationship between alcohol, sugar and density, as sugar rich wines should be thicker while alcohol rich wines should be thinner.
 
 
 ##  Sulphates
@@ -131,11 +114,9 @@ qplot(x = wine$sulphates,
       scale_x_continuous(breaks = seq(0,2,.1 ))
 ```
 
-Our sulphates seem to have a fairly normal distribution save for a few outliers.
-sulphates are used to preserve wine, as our data's accompanying text file 
-indicates it is an antimicrobial and an antioxidant which leads to sulfur 
-dioxide or sulphites in wine.
+Our sulfates seem to have a normal distribution save for a few outliers.
 
+Sulfates are used to preserve wine, are antimicrobial and an antioxidant that leads to sulfur dioxide, or sulfites, in wine.
 
 ##  Total and Free Sulfur Dioxide
 
@@ -155,16 +136,11 @@ qplot(x = wine$free.sulfur.dioxide,
       scale_x_continuous(breaks = seq(0,72,2 ))
 ```
 
-The free sulfur dioxide has a positive skew as does our total sulfur dioxide. 
-Wine makers may be trying to keep these numbers low as sulphites have an 
+The free sulfur dioxide has a positive skew, as does the total sulfur dioxide. 
+Winemakers may be trying to keep these numbers low as sulfites have an 
 undeservedly bad reputation, a topic for another day. 
 
-Later on in our analysis I would be interested to see if our wine experts 
-noticed any difference in our sulphate/sulphite rich wine and those that are
-less so. I expect that we will find that they didn't spot the difference. We 
-should find that there is an relationship between sulphates/sulphites
-and alcohol content, as alcohol rich wines should not need as much preservative
-as those wines with less alcohol.
+It would be interesting to see if the wine experts noticed any difference in sulfate/sulfite-rich wine and those less so. I expect that we will find that they didn't spot the difference. We should find that there is a relationship between sulfates/sulfites and alcohol content. Alcohol-rich wines should not need as much preservative as those wines with less alcohol.
 
 
 ## Fixed and Volatile Acidity
@@ -186,9 +162,9 @@ qplot(x = wine$volatile.acidity,
       scale_x_continuous(breaks = seq(0,2,.1))
 ```
 
-Our volatile acidity also seems to have a fairly normal distribution. It will be
-interesting to see the relationship between sugar, chloride, acidity, citric
-acid and quality later on.
+The volatile acidity also seems to have a nearly normal distribution. 
+
+It will be interesting to see the relationship between sugar, chloride, acidity, citric acid, and quality later on.
 
 
 ## Citric Acid
@@ -201,7 +177,7 @@ qplot(x = wine$citric.acid,
       scale_x_continuous(breaks = seq(0,1,.05))
 ```
 
-Here we see that our citric acid is pretty evenly distrbuted between 0 and .5.
+Here we see that our citric acid is rather evenly distributed between 0 and .5.
 It is interesting that the distribution fell this neatly.
 
 
@@ -213,45 +189,33 @@ It is interesting that the distribution fell this neatly.
 Our dataset has 1599 observations with 13 variables all numeric since we
 converted our integer of quality to numeric to make the data easier to work with
 
-We have a lot of middling quality wines so it makes it more difficult to spot
-what it was that necessarily put the higher quality wines at that rating. If our
-data had more very low and very high quality wines vs just a bunch of average
-wines we might be able to draw more meaningful conclusions than I believe we
-will find here today.
-
+We have many middling quality wines, making it more difficult to spot
+what necessarily puts the higher quality wines at that rating. More meaningful conclusions could be drawn if the data had more observations of lower and higher quality wines.
 
 
 ### What is/are the main feature(s) of interest in your dataset?
 
-* I am interested in what factors put some wines at a higher quality rating than
-others, particularly if sulphates/sulphites made much of a difference to our
-experts. 
+* I am interested in what factors put some wines at a higher quality rating than others. I am particularly interested in whether sulfates/sulfites made much of a difference to our experts. 
 
 * I am interested in the relationship of alcohol content to preservatives,
-including acids and sulphates/sulphites.
+including acids and sulfates/sulfites.
 
 * There should be a relationship between alcohol and sugar content and density. 
 
 * I would like to explore the relationship between volatile acidity and citric
-acid as I would expect that there volatile acidity would go up with the addition
-of citric acid.
+acid as I would expect that their volatile acidity would go up with the addition of citric acid.
 
 ### Of the features you investigated, were there any unusual distributions? \
 
 Did you perform any operations on the data to tidy, adjust, or change the form \
 of the data? If so, why did you do this?
 
-I did change wine quality from an integers to a numeric so that it could be 
+I did change wine quality from integer to numeric so that it could be 
 graphed on a continuous scale.
 
-As far as unusual distributions, most of our data is either positively skewed or
-has a relatively normal distribution, suggesting that less is more for wine
-makers when it comes to any of these factors. Maybe they want to let the flavor
-of the grapes do the talking instead of making an extreme flavor in any
-direction.
+As far as unusual distributions, most of our data is either positively skewed or has a relatively normal distribution, suggesting that less is more for winemakers when it comes to any of these factors. Maybe they want to let the flavor of the grapes shine rather than having extreme of flavor in any direction.
 
-The residual sugar of the wines is very low. We are dealing with a subset of
-very dry wines, which seems unusual.
+The residual sugar of the wines is very low. We are dealing with a subset of very dry wines.
 ----
 ----
 
@@ -274,10 +238,9 @@ ggplot(aes(x = quality, y = sulphates), data = wine)+
   xlab("quality")
 ```
 
-It appears that sulphates in wine do not have a negative effect on quality as I
-expected, despite some people's misgivings about the nature of sulphates in food
-and beverage. In fact, on this plot it appears that the more sulphates were in
-the wine the higher the rating the flavor of the wine got.
+It appears that sulfates in wine do not have a negative effect on quality, despite some people's misgivings about the nature of sulfates in food and beverage. 
+
+In fact, according to this plot, it appears that the more sulfates were in the wine the higher the rating the wine received.
 
 
 ### Total Sulfur Dioxide
@@ -291,10 +254,7 @@ ggplot(aes(x = quality, y = total.sulfur.dioxide), data = wine)+
   xlab("quality")
 ```
 
-Here we see that the total sulfur dioxide seems to have a weak negative 
-relationship with quality. Indeed, our text file suggests that the more total
-sulfur dioxide there is, the more prominent their flavor can be, which must
-be unfavorable
+Here we see that the total sulfur dioxide seems to have a weak negative relationship with the quality. Indeed, our text file suggests that the more total sulfur dioxide there is, the more prominent the flavor, which must be unfavorable
 
 
 ### Free Sulfur Dioxide
@@ -309,10 +269,7 @@ ggplot(aes(x = quality, y = free.sulfur.dioxide), data = wine)+
   xlab("quality")
 ```
 
-In the free sulfur dioxide and the total sulfur dioxide to quality graphs we
-see a very weak relationship. There is likely no relationship between free 
-sulfur dioxide content and perceived quality of wine.
-
+In the free sulfur dioxide and the total sulfur dioxide to quality graphs, we see a very weak relationship. There is likely no relationship between free sulfur dioxide content and the perceived quality of the wine.
 
 ### Fixed Acidity
 
@@ -325,7 +282,7 @@ ggplot(aes(x = quality, y = fixed.acidity), data = wine)+
   stat_cor()
 ```
 
-Our fixed acidity appears to have a weak positive relationship with quality.
+Our fixed acidity appears to have a weak positive relationship with the quality.
 
 
 ### Volatile Acidity
@@ -339,8 +296,7 @@ ggplot(aes(x = quality, y = volatile.acidity), data = wine)+
   stat_cor()
 ```
 
-More volatile acidity seems to decrease quality with a borderline weak/moderate
-relationship.
+More volatile acidity seems to decrease the quality with a borderline weak/moderate relationship.
 
 
 ### Citric Acid
@@ -368,9 +324,7 @@ ggplot(aes(x = quality, y = residual.sugar), data = wine)+
   geom_smooth(method = "lm", formula = y~x)
 ```
 
-The residual sugar does not seem to have much of an effect on quality. This is
-likely due to the fact that most of the wines have a very similar amount of 
-residual sugar.
+The residual sugar does not seem to have much of an effect on the quality. This relationship is likely since most of the wines have a very similar amount of residual sugar.
 
 
 ### Chlorides
@@ -384,7 +338,7 @@ ggplot(aes(x = quality, y = chlorides), data = wine)+
   geom_smooth(method = "lm", formula = y~x)
 ```
 
-There is a very weak negative correlation with salt/chlorides and quality.
+There is a very weak negative correlation between salt/chlorides and quality.
 
 
 ### Density
@@ -398,11 +352,9 @@ ggplot(aes(x = quality, y = density), data = wine)+
   geom_smooth(method = "lm", formula = y~x)
 ```
 
-A similarly weak relationship exists between density and quality, with a minor
-skew toward lower density/more watery wines. Lower density wines should have a
-higher alcohol content and so it is hard to tell which of these variables cause
-the preference.
+A similarly weak relationship exists between density and quality, with a minor skew toward lower density/more watery wines. 
 
+Lower density wines should have a higher alcohol content, and so it is hard to tell which of these variables cause the preference.
 
 ### pH
 
@@ -415,7 +367,7 @@ ggplot(aes(x = quality, y = pH), data = wine)+
   geom_smooth(method = "lm", formula = y~x)
 ```
 
-There does not seem to be much of a relationship between quality and pH
+There does not seem to be much of a relationship between the quality and the pH.
 
 
 ### Alcohol
@@ -429,10 +381,9 @@ ggplot(aes(x = quality, y = alcohol), data = wine)+
   geom_smooth(method = "lm", formula = y~x)
 ```
 
-The relationship between alcohol content and quality seems to be stronger than
-most of the data that we have looked at so far where the more alcohol the higher
-the quality of the wine. Alcohol leads to dryer flavors in wine and this looks
-more and more like this tasting was intended to find the best dry wine.
+The relationship between alcohol content and quality seems stronger than most of the data that we have looked at so far. It appears that the more alcohol, the higher the rating the wine received. 
+
+Higher alcohol content leads to dryer flavors in wine, and this looks more and more like this tasting was intended to find the best dry wine.
 
 
 ## Residual Sugar to Alcohol
@@ -448,17 +399,20 @@ ggplot(aes(x = residual.sugar, y = alcohol), data = wine)+
   scale_x_continuous(breaks = seq(1,16,1))
 ```
 
-Now this graph is interesting because it does not seem to point to the expected
-conclusion that the amount of residual sugar would be roughly inversely
-proportionate to the amount of alcohol in the wine. Between 1.5 and 3 g/dm^3 of
-sugar the alcohol content varies from less than 8.5% to over 14% by volume. We
-can see in the outlier range there looks like there is a negative relationship
-with the alcohol content going down as the residual sugar goes up, but most of
-the data does not follow our expected trend. Our R value seems to indicate a
-very weak positive correlation between our variables. This is likely due to the
-very limited range of sugar in our wines giving us unlikely data.
 
-Let's zoom in on to the bulk of the data area to see if we see any other trends
+This graph is notable because it does not point to the expected
+conclusion, that the residual sugar amount would be inversely
+proportionate to the amount of alcohol in the wine. 
+
+Between 1.5g/dm^3 and 3 g/dm^3 of sugar, the alcohol content varies from less than 8.5% to over 14% by volume. 
+
+We can see in the outlier range there is a negative relationship
+with the alcohol content going down as the residual sugar goes up, but most of the data does not follow our expected trend. 
+
+Our R-value seems to indicate a very weak positive correlation between our variables. This is likely due to the very limited range of sugar in our wines giving us unlikely data.
+
+Let's zoom in on the bulk of the data area to see if we see any other trends.
+
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 #code to plot zoom in on residual sugar to alcohol jitter plot
@@ -471,7 +425,7 @@ ggplot(aes(x = residual.sugar, y = alcohol), data = wine)+
   geom_smooth(method = "lm", formula = y~x)
 ```
 
-So our graph does not at all show the relationship we are expecting here. 
+This graph does not at all show the expected relationship.
 
 
 ## Alcohol to Preservatives
@@ -509,10 +463,9 @@ ggplot(aes(x = alcohol, y = volatile.acidity), data = wine)+
   geom_smooth(method = "lm", formula = y~x)
 ```
 
-Here, as should be expected, we see that the higher the alcohol content, the
-lower the preservatives in the wine. The relationship is weak across the board
-with volatile acidity and total sulfur dioxide having the strongest inverse
-relationships with alcohol.
+Here, as should be expected, we see that the higher the alcohol content, the lower the preservatives in the wine. 
+
+The relationship is weak across the board, with volatile acidity and total sulfur dioxide having the strongest inverse relationships with alcohol.
 
 
 ## Volatile Acidity to Citric Acid
@@ -527,10 +480,9 @@ ggplot(aes(x = volatile.acidity, y = citric.acid), data = wine)+
   coord_cartesian(ylim = c(0,1))
 ```
 
-There seems to be a moderate negative correlation with citric acid and volatile
-acidity. This goes against what I would have thought since citric acid is added
-after wine is made I would have expected that the volatile acidity would 
-increase with the addition of citric acid.
+There seems to be a moderate negative correlation between citric acid and volatile acidity. 
+
+Since citric acid is added after the wine is made, I had expected that the volatile acidity would increase, creating a positive correlation.
 
 
 ## Density to Alcohol
@@ -545,10 +497,8 @@ ggplot(aes(x = density, y = alcohol), data = wine)+
   stat_cor()
 ```
 
-In this graph, as we would expect, the density of the wine goes down as the
-alcohol content goes up. Oddly, we would expect this because the alcohol is
-created by yeast eating sugar, so it's strange with the uniform sugar content
-that this relationship is maintained.
+In this graph, the density of the wine goes down as the alcohol content goes up. 
+Oddly, we would expect this because the alcohol is created by yeast eating sugar, so it is strange with the uniform sugar content that this relationship is maintained.
 
 
 ## Density to Residual Sugar
@@ -563,9 +513,7 @@ ggplot(aes(x = density, y = residual.sugar), data = wine)+
   stat_cor()
 ```
 
-Though the relationship is a bit weaker, we can see that the relationship 
-between density and sugar is maintained where the with should be more dense the
-more sugar it contains.
+Though the relationship is a bit weaker, we can see that the relationship between density and sugar is maintained where the wine should be denser the more sugar it contains.
 
 
 
@@ -577,36 +525,21 @@ the dataset? Did you observe any interesting relationships between the other \
 features (not the main feature(s) of interest)? What was the strongest \
 relationship you found?
 
-The biggest predictors of wine quality by itself was mostly alcohol. Alcohol
-had a moderate relationship with wine quality with an r value of .48. Second to
-that was volatile acidity where it seems that the more volatile acidity there
-was the less liked was the wine. As explained in our text file, a lot of 
-volatile acide leads to a vinegary taste in wine which many fine abhorrent so
-this data point makes sense. Citric acid seemed to be well liked with a 
-coefficient of .23. I remember a manager touting that it added a springy, light
-taste to the wine that people enjoyed and it seems our experts agree to some 
-extent. Our text file indicates something similar that the citric acid adds a
-'freshness' to wine. 
 
-There seemed to be no negative relationship with quality and sulphates in the
-alcohol, even perhaps, a weak positive correlation, though the more total sulfur 
-dioxide there was the worse of a rating the wine got. The free sulfur dioxide
-seemed to make little difference in the wine quality.
+The most significant predictor of wine quality by itself was alcohol content. Alcohol content had a moderate relationship with wine quality, with an R-value of .48. 
 
-Our sugar to alcohol relationship should have been inverse, but according to
-this data there is a very weak relationship. Despite this, the expected
-relationship of sugar to density and alcohol to density is as we expected with
-the higher sugar wines being more dense and the higher alcohol wines being less
-dense.
+Second to the alcohol content was the volatile acidity, where it seems that the more volatile acidity there was, the less desirable the wine. 
+As explained in our text file, volatile acid leads to a vinegary taste in wine which many find offensive.
 
-The strongest relationship was alcohol to density with a -.5 correlational
-coefficient indicating that there is a moderate relationship between those 
-variables. 
+Citric acid seemed to be well-liked with a coefficient of .23. I remember a manager expressing that citric acid added a springy, light taste to the wine that people enjoyed, and it seems our experts agree to some extent. Our text file indicates something similar that the citric acid adds a 'freshness' to wine. 
 
-Our total sulfur dioxide, free sulfur dioxide, fixed acidity and volatile 
-acidity to alcohol comparisons showed a weak negative relationship across the
-board giving some bit of credence to our hypotheses that the more alcohol a
-wine had, the less preservatives a wine make might add to it.
+There seemed to be no negative relationship with quality and sulfates in the alcohol, even perhaps, a weak positive correlation. The more total sulfur dioxide there was, the worse of a rating the wine got. The free sulfur dioxide seemed to make little difference in the wine quality.
+
+The sugar to alcohol relationship should have been inverse, but according to this data, the correlation is weak. Despite this, the expected relationship of sugar to density and alcohol to density is as we expected, with the higher sugar wines being denser and the higher alcohol wines being less dense.
+
+The strongest relationship was alcohol to density with a -.5 correlational coefficient indicating that there is a moderate relationship between those variables. 
+
+Our total sulfur dioxide, free sulfur dioxide, fixed acidity, and volatile acidity to alcohol comparisons showed a weak negative relationship across the board, offering some credence to our hypotheses that the more alcohol the wine had, the fewer preservatives a wine make might add to it.
 
 
 
@@ -620,11 +553,7 @@ ggplot(aes(x = fixed.acidity, y = volatile.acidity, color = citric.acid), data =
   scale_color_gradient(high = 'green', low = 'red')
 ```
 
-This graph shows that our while our citric acid decreases with volatile acidity
-it increases with fixed acidity. I don't know why I didn't think to look at that
-before, it appears that it is just an acid that does not evaporate readily as is
-necessary to be included in our volatile acidity. For fun let's check out the
-bivariate graph of that relationship
+This graph shows that while the citric acid decreases with volatile acidity, it increases with fixed acidity. I don't know why I didn't think to look at that before. It appears that it is just an acid that does not evaporate as readily as is necessary to be included in our volatile acidity. For fun, let's check out the bivariate graph of that relationship
 
 ```{r echo=FALSE}
 #code to plot fixed acidity to citric acid scatter plot
@@ -646,9 +575,7 @@ ggplot(aes(x = alcohol, y = residual.sugar,
   scale_color_gradient(high = 'green', low = 'red')
 ```
 
-Here we show again that the lower the alcohol and the higher the residual sugar
-the higher the density, and the higher the alcohol and the lower the residual
-sugar the lower the density of our wines.
+Here we show again that the lower the alcohol and the higher the residual sugar the higher the density, and the higher the alcohol, and the lower the residual sugar, the lower the density of our wines.
 
 ```{r echo=FALSE}
 #code to plot alcohol to residual sugar to quality jitter plot
@@ -675,13 +602,11 @@ ggplot(aes(x = fixed.acidity, y = volatile.acidity, color = citric.acid), data =
 investigation. Were there features that strengthened each other in terms of \
 looking at your feature(s) of interest?
 
-Mostly these were just a combination of bivariate conclusions less the fixed
-acidity vs citric acid.
+For the most part, these were just a combination of bivariate conclusions less the fixed acidity vs citric acid.
 
 ### Were there any interesting or surprising interactions between features?
 
-I was surprised to find that in observing the relationships between all of our
-acids, the fixed acidity was so closely related to the citric acid content.
+I was surprised to find that, in observing the relationships between all of our acids, the fixed acidity was so closely related to the citric acid content.
 
 # Final Plots and Summary
 
@@ -705,9 +630,7 @@ qplot(x = wine$residual.sugar,
 ### Description of Residual Sugar
 
 This is a graph of the residual sugar in our wines in g/L (g/dm^3).
-This graph shows us that the bulk of our data falls within 1.5 to 2.5 g/dm^3.
-1030 of our wines or over 64% of our 1599 observations fall in this range, which 
-is an unusually low amount of sugar in wines.
+This graph shows us that the bulk of our data falls within 1.5 to 2.5 g/dm^3. 1030 of our wines or over 64% of our 1599 observations fall in this range; an unusually low amount of sugar in wines.
 
 ```{r echo=FALSE, }
 #Equation to get the total # of wines that have residual sugar >= 1.5 and < 2.5
@@ -740,11 +663,7 @@ ggplot(aes(x = residual.sugar, y = alcohol), data = wine)+
 
 ### Descriptionof Alcohol to Residual Sugar
 
-In this graph we see the relationship between residual sugar in g/L and alcohol
-content by volume. We see by the R coefficient that there is a very weak 
-correlation between the two when we should expect a strong correlation. This
-is likely due to our limited values of sugar where too many wines fall in a
-very tight limit on our sugar scale. 
+In this graph, we see the relationship between residual sugar in g/L and alcohol content by volume. We see by the R coefficient a very weak correlation between the two when we expect a stronger correlation. This is likely due to our limited values of sugar where too many wines fall in a very tight limit on our sugar scale. 
 
 ### Plot Three: Alcohol and Residual Sugar with Density
 
@@ -764,12 +683,11 @@ ggplot(aes(x = residual.sugar , y = alcohol,
 
 ### Description of Alcohol and Residual Sugar with Density
 
-This graph illustrates that despite the fact that our alochol and sugar ratios
-are not what we expect them to be, one relationship that we did expect remains.
-The red/orange area of the graph tends toward the top where it becomes more
-of a green/orange on the bottom. This indicates the lower density is toward the
-top where the alcohol content is higher and the higher density is toward the
-bottom where the residual sugar is higher. 
+This graph illustrates that despite the alcohol and sugar ratios not being what we expected, one relationship that we did remains. 
+
+The red/orange area of the graph tends toward the top, where it becomes more of a green/orange on the bottom. 
+
+This indicates the lower density is toward the top, where the alcohol content is higher, and the higher density is toward the bottom, where the residual sugar is higher. 
 
 
 # Reflection
@@ -787,6 +705,4 @@ different substances, like the acid to sugar ratio and quality if the sugar was
 easier to work with and the same with chloride to sugar and acid.
 
 It was interesting to see that sulphates
-were received more positively than most other aspects and that it is possible
-to taste the total sulfur dioxide and that it's flavor made a noticeable impact
-on quality. 
+were received more positively than most other aspects and that it is possible to taste the total sulfur dioxide and that it's flavor made a noticeable impact on quality. 
